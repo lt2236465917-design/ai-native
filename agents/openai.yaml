@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI-native SDLC 实施教练"
+  short_description: "帮助 Solo 开发者和团队建立、试点并验证 AI-native SDLC"
+  default_prompt: "使用 $ai-native 先盘点当前项目与团队的工程上下文，再选择适合的 AI-native SDLC Play，产出可审阅的采用方案和 artifact 模板；写入文件前先说明范围与审批点。"
+
+policy:
+  allow_implicit_invocation: true
