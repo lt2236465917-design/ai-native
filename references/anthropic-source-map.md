@@ -19,6 +19,12 @@
   - 本轮核对：2026-08-31，通过 Codex in-app browser 读取页面正文
 - `[ADAPTATION]` 本 Skill：跨 Agent 的实施流程、文件名适配、Solo/Team profile、脚本和验收规则。
 
+## 模型供应商与宿主边界
+
+- `[OFFICIAL]` DeepSeek API 文档说明其 API 可作为 Claude Code、GitHub Copilot、OpenCode 等 coding assistant 的后端：<https://api-docs.deepseek.com/>。这只能证明模型/API 与宿主是不同层，不证明 DeepSeek 模型会自动发现本 Skill。
+- `[OFFICIAL]` Kimi 平台文档分别列出 Kimi Code CLI、Codex、Claude Code 和 OpenCode 的接入方式：<https://platform.kimi.com/docs/overview>。`Kimi Code` 等是具体宿主或 Agent 产品；是否支持 Agent Skills 和自动发现本仓库，仍需按产品、版本和配置验证。
+- `[UNVERIFIED]` 本仓库尚未在 DeepSeek Harness、Kimi Code 或其他使用这些模型的 runtime 中完成 `ai-native` 的加载与行为验证；对外说明保持 `NOT_VERIFIED`。
+
 ## 可以直接归因于官方原文的内容
 
 | 主题 | 官方事实摘要 | 使用边界 |

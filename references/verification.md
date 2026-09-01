@@ -6,8 +6,10 @@
 
 在 Skill 根目录执行：
 
+> 下面的 `quick_validate.py` 是可选的 Skill 维护工具，不是 Agent Skills 的跨宿主运行依赖。将 `/path/to/skill-creator` 替换为目标环境中的实际路径；目标宿主没有该脚本时，跳过这一项并记录 `NOT_VERIFIED`。其余检查使用仓库自带脚本。
+
 ```bash
-python3 /Users/zhuanzmima0000/.codex/skills/.system/skill-creator/scripts/quick_validate.py /path/to/ai-native
+python3 /path/to/skill-creator/scripts/quick_validate.py /path/to/ai-native
 python3 scripts/validate_artifact_chain.py --root templates --allow-placeholders
 python3 scripts/check_context_conflicts.py --root examples
 python3 scripts/check_runtime_adapter.py --root references

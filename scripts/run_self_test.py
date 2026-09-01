@@ -33,7 +33,7 @@ def main() -> int:
     if validator_verified:
         run([python, str(args.validator), str(root)], root)
     else:
-        print("NOT_VERIFIED: skill-creator quick_validate.py was not supplied; run it separately in a Codex environment")
+        print("NOT_VERIFIED: skill-creator quick_validate.py was not supplied; run it separately in an environment that provides the validator")
     run([python, str(root / "scripts/validate_artifact_chain.py"), "--root", str(root / "templates"), "--allow-placeholders"], root)
     run([python, str(root / "scripts/validate_artifact_chain.py"), "--root", str(root / "examples/solo-project")], root)
     run([python, str(root / "scripts/validate_artifact_chain.py"), "--root", str(root / "tests/fixtures/invalid-chain"), "--expect-fail"], root)

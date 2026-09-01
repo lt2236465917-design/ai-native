@@ -2,9 +2,11 @@
 
 本文件定义 `[ADAPTATION]` 方案：共享内容只维护一份，运行时专属入口只做薄适配。不要因为文件名存在就宣称某个 Agent 已经加载了上下文。
 
+Agent Skills 的标准入口是 `SKILL.md`（规范：<https://agentskills.io/specification>）；`AGENTS.md` 是本 Skill 采用的工程上下文/指令文件约定。两者解决不同问题，不能互相替代，也不能仅凭文件名推断宿主行为。
+
 参考入口（实际能力仍需按 runtime/version/surface 验证）：
 
-- `AGENTS.md` 开放格式说明：<https://agents.md/>
+- `AGENTS.md` 项目上下文文件说明：<https://agents.md/>
 - Claude Code context 文档：<https://code.claude.com/docs/en/memory>
 - Gemini CLI context 文件配置：<https://geminicli.com/docs/cli/gemini-md/>
 - 本 Skill 的证据模板：`../templates/runtime-evidence.md`
@@ -30,15 +32,16 @@ project/
 
 ## 能力矩阵模板
 
-每个项目应填写实际版本和验证证据，而不是套用下表的默认值：
+每个项目应填写实际版本和验证证据，而不是套用下表的默认值。模型/API 提供方（如 DeepSeek、Kimi）本身不负责 Skill 发现；下表的 runtime/host 行描述的是承载和加载 Skill 的宿主层：
 
 | Runtime / surface | 默认发现 `AGENTS.md` | 显式配置方式 | adapter | 已验证证据 |
 |---|---:|---|---|---|
-| Codex | `met` / `unknown` | 项目配置或 fallback 文件名 | 通常不需要 | 命令、上下文输出或文档链接 |
+| Codex | 依 surface / version | 项目配置或 fallback 文件名 | 通常不需要 | 命令、上下文输出或文档链接 |
 | Claude Code | `not by default` | `CLAUDE.md` 的 `@AGENTS.md` 或 symlink | `CLAUDE.md` | `/context` 或实际会话记录 |
 | Gemini CLI | 依版本/配置 | `context.fileName` | `GEMINI.md` 或 settings | 实际配置与启动输出 |
 | GitHub Copilot | 依 surface | 仓库/IDE/CLI 对应配置 | `copilot-instructions.md` 等 | 目标 surface 文档和运行验证 |
 | 其他 Agent | `unknown` | 该 runtime 的 context/instructions 配置 | 按需 | 运行态证据 |
+| 模型/API 提供方（DeepSeek、Kimi） | 不适用 | 由具体兼容 Agent/harness 显式加载 `SKILL.md` | 无统一 adapter | 宿主级运行态证据 |
 
 `met`、`not by default` 和 `unknown` 是状态，不是能力承诺。对 GitHub Copilot 等产品要按 GitHub.com、IDE、CLI、review 等 surface 分开记录。
 

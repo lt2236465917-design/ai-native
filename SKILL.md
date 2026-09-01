@@ -1,6 +1,6 @@
 ---
 name: ai-native
-description: "帮助 Solo 开发者或软件团队评估、落地并验证受 Anthropic AI-native SDLC playbook 启发的开发体系；在需要建立 committed artifact 链、工程上下文、人工门禁、运行时适配或确定性治理时使用，不用于普通编码、单纯文章摘要或未经授权的生产变更。"
+description: "帮助 Solo 开发者或软件团队评估、落地并验证受 Anthropic AI-native SDLC playbook 启发的开发体系；这是遵循 Agent Skills 开放格式、与模型和厂商无关、可在支持该格式或显式加载 SKILL.md 的 Agent runtime 中使用的实施教练；在需要建立 committed artifact 链、工程上下文、人工门禁、运行时适配或确定性治理时使用；不用于普通编码、单纯文章摘要或未经授权的生产变更。"
 ---
 
 # AI-native SDLC 实施教练
@@ -11,12 +11,15 @@ description: "帮助 Solo 开发者或软件团队评估、落地并验证受 An
 
 `[OFFICIAL]` Anthropic playbook 将 Play 分为 Plan、Design、Build、Test、Deploy、Maintain 六个阶段。它们是非线性的 Play 集合；本 Skill 的采用顺序由前置条件、当前瓶颈和风险决定，不要把六阶段输出成固定流水线。
 
+`[ADAPTATION]` 本目录采用 [Agent Skills 开放格式](https://agentskills.io/specification)：`SKILL.md` 是跨宿主的核心入口，`references/`、`templates/` 和 `scripts/` 是可按任务读取的配套内容。`agents/openai.yaml` 仅提供 Codex 的 UI 与调用元数据，其他宿主可以忽略。自动发现、调用方式、工具权限和脚本执行能力都由实际 Agent runtime、版本和 surface 决定；没有运行证据时保持 `[UNVERIFIED]`。
+
 ## 证据和命名边界
 
 - Anthropic 官方页面是 `[OFFICIAL]` canonical source：<https://www.claude.com/blog/the-ai-native-sdlc-playbook>。
+- Agent Skills 开放格式规范定义了 `SKILL.md` 目录入口：<https://agentskills.io/specification>。它是格式说明，不代表任一宿主已经自动加载或执行本 Skill。
 - 中文编译文章只能作为辅助阅读：<https://www.woshipm.com/ai/6454739.html>。不要把编译文新增的评论或删改内容写成 Anthropic 的原话。
 - 本 Skill 的跨 Agent 适配、模板和流程都标记为 `[ADAPTATION]`；用户或组织确认的选择标记为 `[LOCAL]`；没有实际证据的能力或兼容性标记为 `[UNVERIFIED]`。
-- 原文的 `CLAUDE.md` play 在这里称为“工程上下文（Engineering Context）”。共享 canonical 文件默认是 `AGENTS.md`，但这不是所有运行时都会无配置自动发现的 universal contract。
+- 原文的 `CLAUDE.md` play 在这里称为“工程上下文（Engineering Context）”。`AGENTS.md` 是本 Skill 选择的共享上下文文件约定，不是 Agent Skills 的 `SKILL.md`，也不是所有运行时都会无配置自动发现的 universal contract。
 - Claude Code 官方文档说明它读取 `CLAUDE.md` 而不是 `AGENTS.md`；需要 Claude Code 时使用薄 adapter（`@AGENTS.md` 或 symlink），不要复制两份共享规则。详见 [runtime-adapters.md](references/runtime-adapters.md)。
 
 ## 何时使用
